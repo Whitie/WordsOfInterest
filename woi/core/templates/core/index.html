@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}{% load i18n %}
+
+{% block center %}
+{% if not index %}
+<a class="button is-pulled-right mt-1" href="{% url 'core:index' %}" title="{% translate 'Remove filter' %}">
+  <span class="icon is-small">
+    <i class="fas fa-backspace"></i>
+  </span>
+</a>
+{% endif %}
+<h1 class="title mt-4">{{ headline }}</h1>
+{% for post in posts %}
+  {% include 'core/article.inc.html' %}
+{% empty %}
+<strong>{% translate 'No articles' %}</strong>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% load i18n %}
+<h3>
+    <span class="icon"><i class="far fa-calendar-alt"></i></span>
+    {% translate 'Articles by year' %}
+</h3>
+<ul>
+    {% for year, count in posts_by_year %}
+    <li><a href="{% url 'core:by-year' year %}">{{ year }} ({{ count }})</li>
+    {% endfor %}
+</ul>

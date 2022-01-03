@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}{% load i18n %}
+
+{% block center %}
+<h1 class="title mt-4">
+    <span class="icon"><i class="{{ info.fa_icon }}"></i></span>
+    <span>{{ info.name }}</span>
+</h1>
+<div class="content">
+    {{ info.html|safe }}
+</div>
+{% endblock %}

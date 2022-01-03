@@ -1,0 +1,13 @@
+{% load i18n %}
+<h3>
+    <span class="icon"><i class="fas fa-tags"></i></span>
+    {% translate 'Articles by tag' %}
+</h3>
+<div class="tags">
+    {% for tag in tags %}
+    <a class="tag is-link" href="{% url 'core:by-tag' tag.tag %}"{% if tag.description %} title="{{ tag.description }}"{% endif %}>
+        <span class="icon"><i class="fas fa-tag"></i></span>
+        <span>{{ tag.tag }} ({{ tag.posts.count }})</span>
+    </a>
+    {% endfor %}
+</div>

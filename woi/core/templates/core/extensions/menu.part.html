@@ -1,0 +1,73 @@
+{% load i18n %}
+<aside class="menu">
+    <p class="menu-label">
+        <span class="icon"><i class="fas fa-blog"></i></span>
+        <span>{% translate 'Blog' %}</span>
+    </p>
+    <ul class="menu-list">
+        <li>
+            <a href="{% url 'core:index' %}">
+                <span class="icon"><i class="fas fa-home"></i></span>
+                <span>{% translate 'Home' %}</span>
+            </a>
+        </li>
+        {% for info in infos %}
+        <li>
+            <a href="{% url 'core:info' info.ident %}">
+                <span class="icon"><i class="{{ info.fa_icon }}"></i></span>
+                <span>{{ info.name }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% if perms.core.can_write or perms.core.can_publish %}
+    <p class="menu-label">
+        <span class="icon"><i class="far fa-newspaper"></i></span>
+        <span>{% translate 'Articles' %}</span>
+    </p>
+    <ul class="menu-list">
+        {% if perms.core.can_write %}
+        <li>
+            <a href="{% url 'admin:core_post_add' %}">
+                <span class="icon"><i class="fas fa-feather-alt"></i></span>
+                <span>{% translate 'Write article' %}</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'admin:core_comment_changelist' %}">
+                <span class="icon"><i class="fas fa-check-double"></i></span>
+                <span>
+                    {% translate 'Approve comments' %}
+                    ({{ comments_count }})
+                </span>
+            </a>
+        </li>
+        {% endif %}
+        {% if perms.core.can_publish %}
+        <li>
+            <a href="{% url 'admin:core_post_changelist' %}">
+                <span class="icon"><i class="far fa-arrow-alt-circle-up"></i></span>
+                <span>
+                    {% translate 'Publish articles' %}
+                    ({{ posts_count }})
+                </span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    {% if user.is_staff %}
+    <p class="menu-label">
+        <span class="icon"><i class="fas fa-toolbox"></i></span>    
+        <span>{% translate 'Administration' %}</span>
+    </p>
+    <ul class="menu-list">
+        <li>
+            <a href="{% url 'admin:index' %}">
+                <span class="icon"><i class="fas fa-tools"></i></span>
+                <span>{% translate 'Backend' %}</span>
+            </a>
+        </li>
+    </ul>
+    {% endif %}
+</aside>

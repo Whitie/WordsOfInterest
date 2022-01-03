@@ -1,0 +1,66 @@
+<!doctype html>{% load static %}{% load i18n %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static '3rd/css/all.min.css' %}" rel="stylesheet">
+    <link href="{% static '3rd/css/bulma.min.css' %}" rel="stylesheet">
+    <link href="{% static '3rd/css/easymde.min.css' %}" rel="stylesheet">
+    <title>{{ woi_title|default:'WoI' }}</title>
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <div class="container">
+      <section class="hero is-primary">
+        <div class="hero-body">
+          {% for message in messages %}
+          <div class="notification is-overlay is-pulled-right is-{{ message.tags }} is-light">
+            <button class="delete"></button>
+            {{ message }}
+          </div>
+          {% endfor %}
+          <p class="title">
+            <span class="icon"><i class="fas fa-blog"></i></span>
+            {{ woi_title|default:'WoI' }}
+          </p>
+          <p class="subtitle">{{ woi_subtitle|default:'Words of Interest' }}</p>
+        </div>
+      </section>
+      {% block main %}
+      <div class="columns">
+          <div class="column" id="left">
+            {% block left %}{% endblock %}
+          </div>
+          <div class="column is-half" id="center">
+            {% block center %}{% endblock %}
+          </div>
+          <div class="column" id="right">
+            {% block right %}{% endblock %}
+          </div>
+      </div>
+      {% endblock %}
+    </div>
+    {% if woi_footer %}
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>WoI</strong> {% translate 'by' %} <a href="https://whitie.de">Whitie</a>.
+          {% translate 'The source code is licensed' %}
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+          {% translate 'The website content is licensed' %}
+          <a href="{{ woi_content_license.url }}">{{ woi_content_license.text }}</a>.
+        </p>
+      </div>
+    </footer>
+    {% endif %}
+    {{ woi_js|json_script:'woi-js' }}
+    <script src="{% url 'javascript-catalog' %}"></script>
+    <script src="{% static '3rd/js/easymde.min.js' %}"></script>
+    <script src="{% static '3rd/js/mithril.min.js' %}"></script>
+    <script src="{% static 'core/js/core.js' %}"></script>
+    {% if woi_ext_js %}
+    <script src="{% url 'core:extensions-js' %}"></script>
+    {% endif %}
+    {% block js %}{% endblock %}
+  </body>
+</html>

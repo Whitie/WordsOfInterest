@@ -20,6 +20,8 @@ def list_of_years(req):
 
 def list_of_tags(req):
     tags = [x for x in Tag.objects.select_related().all() if x.has_posts]
+    if not tags:
+        raise ValueError('No tags available')
     return utils.render_template(
         req, 'core/extensions/list_of_tags.part.html', {'tags': tags}
     )

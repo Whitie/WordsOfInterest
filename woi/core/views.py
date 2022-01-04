@@ -20,10 +20,7 @@ from .models import Comment, Extension, Post, SiteInfo, Tag, View
 def index(req):
     posts = Post.objects.select_related().filter(
         status=Post.Status.PUBLISHED
-    )
-    if not req.user.is_authenticated:
-        posts = posts.exclude(internal=True)
-    posts = posts.order_by('-updated')[:10]
+    ).order_by('-updated')[:10]
     ctx = dict(posts=posts, headline=_('Last 10 Articles'), index=True)
     return render(req, 'core/index.html', ctx)
 
@@ -31,20 +28,14 @@ def index(req):
 def posts_by_year(req, year):
     posts = Post.objects.select_related().filter(
         status=Post.Status.PUBLISHED, created__year=year
-    )
-    if not req.user.is_authenticated:
-        posts = posts.exclude(internal=True)
-    posts = posts.order_by('-created')
+    ).order_by('-created')
     ctx = dict(posts=posts, headline=_('Articles {}').format(year))
     return render(req, 'core/index.html', ctx)
 
 
 def posts_by_tag(req, tag_name):
     tag = get_object_or_404(Tag, tag=tag_name)
-    posts = tag.posts.filter(status=Post.Status.PUBLISHED)
-    if not req.user.is_authenticated:
-        posts = posts.exclude(internal=True)
-    posts = posts.order_by('-updated')
+    posts = tag.posts.filter(status=Post.Status.PUBLISHED).order_by('-updated')
     ctx = dict(posts=posts, headline=_('Articles tagged {}').format(tag_name))
     return render(req, 'core/index.html', ctx)
 
@@ -52,9 +43,6 @@ def posts_by_tag(req, tag_name):
 def article(req, slug):
     q = Post.objects.select_related().filter(status=Post.Status.PUBLISHED)
     post = get_object_or_404(q, slug=slug)
-    if not req.user.is_authenticated and post.internal:
-        messages.error(req, _('Login to view this article.'))
-        return redirect('core:index')
     comments = post.comments.filter(active=True).order_by('-created')
     unpublished = post.comments.filter(active=False).count()
     ctx = dict(post=post, comments=comments, unpublished=unpublished)

@@ -58,7 +58,6 @@ class Post(models.Model):
         Tag, verbose_name=_('Tags'), related_name='posts', blank=True
     )
     comments_allowed = models.BooleanField(_('Comments allowed'), default=True)
-    internal = models.BooleanField(_('Internal'), default=False)
 
     def __str__(self) -> str:
         return f'{self.title} - {self.author.username}'

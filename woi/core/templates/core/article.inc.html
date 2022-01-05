@@ -40,10 +40,12 @@
                         <span class="icon"><i class="fab fa-readme"></i></span>
                     </a>
                     <i class="fas fa-grip-lines-vertical"></i>
-                    <a href="{% url 'core:article' post.slug %}#section-comments" title="{% translate 'Comments' %}">
+                    {% with num_comments=post.comments.count %}
+                    <a href="{% url 'core:article' post.slug %}#section-comments" title="{% translate 'Comments: {{ num_comments }}' %}">
                         <span class="icon"><i class="fas fa-comments"></i></span>
-                        <span>({{ post.comments.count }})</span>
+                        <span>({{ num_comments }})</span>
                     </a>
+                    {% endwith %}
                     {% if post.is_updated %}
                     <i class="fas fa-grip-lines-vertical"></i>
                     <span class="has-text-link" title="{% translate 'Updated' %}">

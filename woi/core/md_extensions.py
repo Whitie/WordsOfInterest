@@ -20,10 +20,10 @@ class WoiLinkInlineProcessor(InlineProcessor):
             post = Post.objects.get(slug=slug)
             link = reverse('core:article', args=(slug,))
             text = post.title
+            _cache[ctag] = (link, text)
         except Post.DoesNotExist:
             link = '/'
             text = f'Post: {slug} not found'
-        _cache[ctag] = (link, text)
         return link, text
 
     def _handle_info(self, ident):
@@ -35,10 +35,10 @@ class WoiLinkInlineProcessor(InlineProcessor):
             info = SiteInfo.objects.get(ident=ident)
             link = reverse('core:info', args=(ident,))
             text = info.name
+            _cache[ctag] = (link, text)
         except SiteInfo.DoesNotExist:
             link = '/'
             text = f'SiteInfo: {ident} not found'
-        _cache[ctag] = (link, text)
         return link, text
 
     def handleMatch(self, m, data):

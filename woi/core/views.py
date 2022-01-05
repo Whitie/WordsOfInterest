@@ -5,8 +5,7 @@ from django.contrib.auth import (
     authenticate, login as auth_login, logout as auth_logout
 )
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
-from django.http.response import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.module_loading import import_string
 from django.utils.translation import gettext as _

@@ -1,16 +1,20 @@
-import markdown
-
 from http import HTTPStatus
 from io import StringIO
+
+import markdown
 
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.template.engine import Engine
 from markdown import Markdown
 
+from .md_extensions import WoiLinkExtension
+
 
 def create_html(text: str) -> str:
-    return markdown.markdown(text, extensions=['extra', 'toc'])
+    return markdown.markdown(
+        text, extensions=[WoiLinkExtension(), 'extra', 'toc']
+    )
 
 
 def _unmark_element(element, stream=None):

@@ -6,11 +6,15 @@ from markdown.inlinepatterns import InlineProcessor
 
 
 LINK_PATTERN = r':woi-(?P<type>article|info):(?P<slug>.+?)(?P<text>:.*?)?:'
+_cache = {}
 
 
 class WoiLinkInlineProcessor(InlineProcessor):
 
     def _handle_article(self, slug):
+        ctag = f'article__{slug}'
+        if ctag in _cache:
+            return _cache[ctag]
         from .models import Post
         try:
             post = Post.objects.get(slug=slug)
@@ -19,9 +23,13 @@ class WoiLinkInlineProcessor(InlineProcessor):
         except Post.DoesNotExist:
             link = '/'
             text = f'Post: {slug} not found'
+        _cache[ctag] = (link, text)
         return link, text
 
     def _handle_info(self, ident):
+        ctag = f'info__{ident}'
+        if ctag in _cache:
+            return _cache[ctag]
         from .models import SiteInfo
         try:
             info = SiteInfo.objects.get(ident=ident)
@@ -30,6 +38,7 @@ class WoiLinkInlineProcessor(InlineProcessor):
         except SiteInfo.DoesNotExist:
             link = '/'
             text = f'SiteInfo: {ident} not found'
+        _cache[ctag] = (link, text)
         return link, text
 
     def handleMatch(self, m, data):

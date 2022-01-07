@@ -5,6 +5,14 @@
     <span>{{ user.username }}</span>
 </h3>
 <p>
+    {% if user.email %}{{ user.email }}<br>{% endif %}
+    {% translate 'Superuser:' %} {{ user.is_superuser|yesno }}<br>
+    {% translate 'Articles:' %}
+    {{ user.posts.count }}<br>
+    {% translate 'Member since' %}
+    {{ user.date_joined|date:'SHORT_DATETIME_FORMAT' }}
+</p>
+<p>
     <a href="{% url 'core:logout' %}" class="button is-link is-light is-pulled-right">
         <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
         <span>{% translate 'Logout' %}</span>

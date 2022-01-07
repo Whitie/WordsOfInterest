@@ -1,10 +1,15 @@
-{% extends 'core/index.html' %}{% load i18n %}{% load woi_tags %}
+{% extends 'core/base.html' %}{% load i18n %}{% load woi_tags %}
 
 {% block center %}
 <div class="has-text-grey-light is-pulled-right">
     <small title="{% translate 'Reading time' %}">
         <span class="icon"><i class="far fa-hourglass"></i></span>
         <span>{{ post.reading_time }}</span>
+        {% if user.is_superuser or user == post.author %}
+        <a href="{% url 'core:edit-article' post.slug %}" title="{% translate 'Edit article' %}">
+            <span class="icon"><i class="fas fa-edit"></i></span>
+        </a>
+        {% endif %}
     </small>
 </div>
 <h1 class="title mt-4">

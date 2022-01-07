@@ -4,16 +4,17 @@ from django.contrib import messages
 from django.contrib.auth import (
     authenticate, login as auth_login, logout as auth_logout
 )
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.module_loading import import_string
+from django.utils.text import slugify
 from django.utils.translation import gettext as _
 from django.views.decorators.http import require_http_methods, require_POST
 
 from . import utils
-from .forms import LoginForm
-from .models import Comment, Extension, Post, SiteInfo, Tag, View
+from .forms import ArticleForm, LoginForm
+from .models import Comment, Extension, Post, PostImage, SiteInfo, Tag, View
 
 
 def index(req):
@@ -48,6 +49,41 @@ def article(req, slug):
     return render(req, 'core/article.html', ctx)
 
 
+@permission_required('core.can_write', raise_exception=True)
+def edit_article(req, slug=None):
+    if slug:
+        post = get_object_or_404(Post, slug=slug)
+    else:
+        post = None
+    if req.method == 'POST':
+        form = ArticleForm(req.POST, req.FILES)
+        if form.is_valid():
+            cd = form.cleaned_data
+            if not post:
+                post = Post(slug=slugify(cd['title']))
+            post.title = cd['title']
+            post.image = cd['image']
+            post.raw = cd['raw']
+            post.tags.set(cd['tags'])
+            post.comments_allowed = cd['comments_allowed']
+            post.save()
+            messages.success(req, _('Article was saved.'))
+            return redirect('core:index')
+    else:
+        if post:
+            form = ArticleForm({
+                'title': post.title,
+                'image': post.image,
+                'raw': post.raw,
+                'tags': post.tags.all(),
+                'comments_allowed': post.comments_allowed
+            })
+        else:
+            form = ArticleForm()
+    ctx = dict(form=form, post=post)
+    return render(req, 'core/edit_article.html', ctx)
+
+
 def info(req, ident):
     site_info = get_object_or_404(SiteInfo, ident=ident)
     return render(req, 'core/info.html', {'info': site_info})
@@ -76,8 +112,17 @@ def logout(req):
 @login_required
 @require_POST
 def image_upload(req):
-    print(req.FILES)
-    return JsonResponse({'error': 'typeNotAllowed'})
+    img = PostImage.objects.create(file=req.FILES['image'])
+    url = req.build_absolute_uri(img.file.url)
+    return JsonResponse({'data': {'filePath': url}})
+
+
+@login_required
+@require_POST
+def markdown_preview(req):
+    data = json.loads(req.body)
+    html = utils.create_html(data['markdown'])
+    return JsonResponse({'html': html})
 
 
 @require_http_methods(['PUT'])

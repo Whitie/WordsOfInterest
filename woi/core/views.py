@@ -8,13 +8,14 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.module_loading import import_string
+from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import gettext as _
 from django.views.decorators.http import require_http_methods, require_POST
 
 from . import utils
 from .forms import ArticleForm, LoginForm
-from .models import Comment, Extension, Post, PostImage, SiteInfo, Tag, View
+from .models import Comment, Extension, Post, PostImage, SiteInfo, Tag
 
 
 def index(req):
@@ -61,6 +62,8 @@ def edit_article(req, slug=None):
             cd = form.cleaned_data
             if not post:
                 post = Post(slug=slugify(cd['title']))
+            else:
+                post.updated = timezone.now()
             post.title = cd['title']
             post.image = cd['image']
             post.raw = cd['raw']
@@ -136,9 +139,8 @@ def save_comment(req):
 
 def inc_views(req, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    view, created = View.objects.get_or_create(post=post)
-    view.clicks += 1
-    view.save()
+    post.views += 1
+    post.save()
     return HttpResponse('OK')
 
 

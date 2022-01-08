@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils import timezone
 from django.utils.text import slugify, Truncator
 from django.utils.translation import gettext_lazy as _
 
@@ -49,7 +50,7 @@ class Post(models.Model):
     raw = models.TextField(_('Raw content'))
     html = models.TextField(editable=False, blank=True)
     created = models.DateTimeField(_('Created'), auto_now_add=True)
-    updated = models.DateTimeField(_('Updated'), auto_now=True)
+    updated = models.DateTimeField(_('Updated'), default=timezone.now)
     status = models.CharField(
         _('Status'), max_length=10, choices=Status.choices,
         default=Status.DRAFT
@@ -58,6 +59,7 @@ class Post(models.Model):
         Tag, verbose_name=_('Tags'), related_name='posts', blank=True
     )
     comments_allowed = models.BooleanField(_('Comments allowed'), default=True)
+    views = models.PositiveIntegerField(_('Views'), default=0)
 
     def __str__(self) -> str:
         return f'{self.title} - {self.author.username}'
@@ -112,22 +114,6 @@ class Post(models.Model):
             ('can_write', _('Can write Post')),
             ('can_publish', _('Can publish Post')),
         ]
-
-
-class View(models.Model):
-    post = models.OneToOneField(
-        Post, on_delete=models.CASCADE, verbose_name=_('Post'),
-        related_name='views'
-    )
-    clicks = models.PositiveIntegerField(_('Clicks'), default=0,
-                                         editable=False)
-
-    def __str__(self) -> str:
-        return f'{self.post} [{self.clicks}]'
-
-    class Meta:
-        verbose_name = _('View')
-        verbose_name_plural = _('Views')
 
 
 class Comment(models.Model):

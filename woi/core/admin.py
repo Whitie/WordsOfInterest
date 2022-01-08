@@ -1,10 +1,6 @@
 from django.contrib import admin
 
-from .models import Comment, Extension, Post, PostImage, SiteInfo, Tag, View
-
-
-class PostImageInline(admin.TabularInline):
-    model = PostImage
+from .models import Comment, Extension, Post, SiteInfo, Tag
 
 
 @admin.register(Comment)
@@ -25,11 +21,11 @@ class ExtensionAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    inlines = [PostImageInline]
-    list_display = ('author', 'title', 'created', 'updated', 'status')
+    list_display = ('author', 'title', 'created', 'updated', 'status', 'views')
     list_filter = ('author', 'status', 'updated')
     list_editable = ('title', 'status')
     search_fields = ('title', 'author__username')
+    readonly_fields = ('views',)
     prepopulated_fields = {'slug': ('title',)}
     exclude = ('author',)
 
@@ -61,8 +57,3 @@ class TagAdmin(admin.ModelAdmin):
     list_display = ('id', 'tag', 'description')
     list_editable = ('tag', 'description')
     search_fields = ('tag', 'description')
-
-
-@admin.register(View)
-class ViewAdmin(admin.ModelAdmin):
-    list_display = ('post', 'clicks')

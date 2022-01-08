@@ -36,12 +36,13 @@
                 </div>
                 {% endif %}
                 <small>
-                    <a href="{% url 'core:article' post.slug %}" title="{% translate 'Read article' %}">
+                    <span class="has-text-link" title="{% translate 'Views' %}">
                         <span class="icon"><i class="fab fa-readme"></i></span>
-                    </a>
+                        <span>({{ post.views }})</span>
+                    </span>
                     <i class="fas fa-grip-lines-vertical"></i>
                     {% with num_comments=post.comments.count %}
-                    <a href="{% url 'core:article' post.slug %}#section-comments" title="{% translate 'Comments: {{ num_comments }}' %}">
+                    <a href="{% url 'core:article' post.slug %}#section-comments" title="{% translate 'Comments:' %} {{ num_comments }}">
                         <span class="icon"><i class="fas fa-comments"></i></span>
                         <span>({{ num_comments }})</span>
                     </a>

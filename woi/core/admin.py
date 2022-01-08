@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils import timezone
 
 from .models import Comment, Extension, Post, SiteInfo, Tag
 
@@ -27,11 +28,16 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'author__username')
     readonly_fields = ('views',)
     prepopulated_fields = {'slug': ('title',)}
-    exclude = ('author',)
+    exclude = ('author', 'updated')
 
     def save_model(self, request, obj, form, change):
         if not obj.author:
             obj.author = request.user
+        if change:
+            p = Post.objects.get(pk=obj.id)
+            cd = form.cleaned_data
+            if p.title != cd['title'] or p.raw != cd['raw']:
+                obj.updated = timezone.now()
         super().save_model(request, obj, form, change)
 
     class Media:

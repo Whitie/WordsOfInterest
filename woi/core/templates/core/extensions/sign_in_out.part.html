@@ -6,6 +6,7 @@
 </h3>
 <p>
     {% if user.email %}{{ user.email }}<br>{% endif %}
+    {% translate 'Author:' %} {{ perms.core.can_write|yesno }}<br>
     {% translate 'Superuser:' %} {{ user.is_superuser|yesno }}<br>
     {% translate 'Articles:' %}
     {{ user.posts.count }}<br>

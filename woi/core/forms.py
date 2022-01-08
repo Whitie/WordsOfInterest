@@ -36,3 +36,6 @@ class ArticleForm(forms.Form):
     comments_allowed = forms.BooleanField(
         label=_('Allow comments'), required=False, initial=True
     )
+    publish = forms.BooleanField(
+        label=_('Publish'), required=False, initial=False
+    )

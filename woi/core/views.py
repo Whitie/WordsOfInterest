@@ -69,6 +69,10 @@ def edit_article(req, slug=None):
             post.raw = cd['raw']
             post.tags.set(cd['tags'])
             post.comments_allowed = cd['comments_allowed']
+            if cd.get('publish', False):
+                post.status = Post.Status.PUBLISHED
+            else:
+                post.status = Post.Status.DRAFT
             post.save()
             messages.success(req, _('Article was saved.'))
             return redirect('core:index')
@@ -79,7 +83,8 @@ def edit_article(req, slug=None):
                 'image': post.image,
                 'raw': post.raw,
                 'tags': post.tags.all(),
-                'comments_allowed': post.comments_allowed
+                'comments_allowed': post.comments_allowed,
+                'publish': post.status == Post.Status.PUBLISHED,
             })
         else:
             form = ArticleForm()

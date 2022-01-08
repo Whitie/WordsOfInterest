@@ -61,6 +61,15 @@
                     {{ form.comments_allowed.label }}
                 </label>
             </div>
+            {% if perms.core.can_publish %}
+            <div class="field">
+                <label class="label">{% translate 'Direct publishing' %}</label>
+                <label class="checkbox">
+                    {{ form.publish }}
+                    {{ form.publish.label }}
+                </label>
+            </div>
+            {% endif %}
             <div class="field is-grouped">
                 <div class="control">
                     <button class="button is-primary">

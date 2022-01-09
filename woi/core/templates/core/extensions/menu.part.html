@@ -34,7 +34,7 @@
             </a>
         </li>
         <li>
-            <a href="{% url 'admin:core_comment_changelist' %}">
+            <a href="{% url 'core:approve-comments' %}">
                 <span class="icon"><i class="fas fa-check-double"></i></span>
                 <span>
                     {% translate 'Approve comments' %}
@@ -45,7 +45,7 @@
         {% endif %}
         {% if perms.core.can_publish %}
         <li>
-            <a href="{% url 'admin:core_post_changelist' %}">
+            <a href="{% url 'core:publish-articles' %}">
                 <span class="icon"><i class="far fa-arrow-alt-circle-up"></i></span>
                 <span>
                     {% translate 'Publish articles' %}

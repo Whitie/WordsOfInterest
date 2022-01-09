@@ -97,6 +97,44 @@ def info(req, ident):
     return render(req, 'core/info.html', {'info': site_info})
 
 
+@permission_required('core.can_write', raise_exception=True)
+def approve_comments(req, post_id=None):
+    query = Comment.objects.select_related().filter(active=False)
+    if post_id:
+        post = get_object_or_404(Post, pk=post_id)
+        comments = query.filter(post=post).order_by('created')
+    else:
+        comments = query.order_by('post', 'created')
+    return render(req, 'core/comments.html', {'comments': comments})
+
+
+@permission_required('core.can_write', raise_exception=True)
+@require_POST
+def approve_comment(req):
+    data = json.loads(req.body)
+    try:
+        comment = Comment.objects.get(pk=data['id'])
+        if data.get('command', 'ok') == 'delete':
+            comment.body = _('[Deleted]')
+        comment.active = True
+        comment.save()
+        result = dict(result='success')
+    except Comment.DoesNotExist:
+        result = dict(
+            result='error',
+            error=f'Object with ID {data["id"]} does not exist.'
+        )
+    return JsonResponse(result)
+
+
+@permission_required('core.can_publish', raise_exception=True)
+def publish_articles(req):
+    posts = Post.objects.select_related().filter(
+        status=Post.Status.DRAFT
+    ).order_by('created')
+    return render(req, 'core/articles.html', {'posts': posts})
+
+
 @require_POST
 def login(req):
     form = LoginForm(req.POST)
@@ -138,7 +176,10 @@ def save_comment(req):
     data = json.loads(req.body)
     post_id = data.pop('post_id')
     data['post'] = Post.objects.get(pk=post_id)
-    Comment.objects.create(**data)
+    comment = Comment(**data)
+    if req.user.has_perm('core.can_write'):
+        comment.active = True
+    comment.save()
     return utils.HttpResponseCreated()
 
 

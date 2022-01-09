@@ -1,0 +1,74 @@
+{% extends 'core/base.html' %}{% load i18n %}
+
+{% block center %}
+<h1 class="title mt-4">
+    {% translate 'Approve comments' %}
+</h1>
+{% for comment in comments %}
+<article class="media box">
+    <div class="media-content">
+        <div class="content">
+            <p class="is-pulled-right">
+                {{ comment.created|date:'SHORT_DATETIME_FORMAT' }}
+            </p>
+            <small>{% translate 'Article:' %} {{ comment.post.title }}</small>
+            <br>
+            <strong>{{ comment.name }}</strong>
+            {% if comment.email %}
+            <a href="mailto:{{ comment.email }}" title="{{ comment.email }}">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+            </a>
+            {% endif %}
+            <p id="body-{{ comment.id }}">{{ comment.body }}</p>
+            <div class="field is-grouped">
+                <p class="control">
+                    <button id="ok-{{ comment.id }}" class="button is-small is-success" onclick="approve('ok', {{ comment.id }});">
+                        <span class="icon"><i class="far fa-check-circle"></i></span>
+                        <span>{% translate 'Approve' %}</span>
+                    </button>
+                </p>
+                <p class="control">
+                    <button id="del-{{ comment.id }}" class="button is-small is-danger" onclick="approve('delete', {{ comment.id }});">
+                        <span class="icon"><i class="far fa-trash-alt"></i></span>
+                        <span>{% translate 'Delete' %}</span>
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+</article>
+{% empty %}
+<h3>{% translate 'No comments to approve' %}</h3>
+{% endfor %}
+{% endblock %}
+
+{% block js %}
+<script>
+function approve(command, id) {
+    let data = {command: command, id: id};
+    let del = document.getElementById('del-' + id);
+    let ok = document.getElementById('ok-' + id);
+    let body = document.getElementById('body-' + id);
+    m.request({
+        method: 'POST',
+        url: '{% url "core:approve-comment" %}',
+        headers: {'X-CSRFToken': getCookie('csrftoken')},
+        body: data
+    }).then(function(res){
+        if (res.result === 'success') {
+            del.disabled = true;
+            ok.disabled = true;
+            if (command === 'ok') {
+                body.innerHTML += '<br><span class="has-text-success">' + gettext('Published') + '</span>';
+            } else {
+                body.innerHTML = '<span class="has-text-danger">' + gettext('[Deleted]') + '</span>';
+            }
+        } else {
+            alert(res.error);
+        }
+    });
+}
+</script>
+{% endblock %}

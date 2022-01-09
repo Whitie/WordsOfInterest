@@ -47,7 +47,7 @@
     <a name="section-comments"></a>
     <h3>
         <span class="icon"><i class="fas fa-comments"></i></span>
-        {% translate 'Comments' %}
+        <span>{% translate 'Comments' %}</span>
     </h3>
     <div id="unpublished"></div>
     {% for comment in comments %}
@@ -106,7 +106,14 @@ Comment.data.name = '{{ user.username }}';
 {% endif %}
 let Unpublished = {
     view: function() {
+        {% if perms.core.can_write %}
+        return m('p',
+            m('a', {href: '{% url "core:approve-comments" post.id %}'},
+              gettext('Comments waiting for approval: ') + count)
+        );
+        {% else %}
         return m('p', gettext('Comments waiting for approval: ') + count);
+        {% endif %}
     }
 };
 m.mount(unpublished_element, Unpublished);

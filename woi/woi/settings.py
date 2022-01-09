@@ -152,3 +152,4 @@ WOI_CONTENT_LICENSE = {
     'url': 'https://creativecommons.org/licenses/by-nd/4.0/legalcode',
     'text': 'CC BY-ND 4.0',
 }
+WOI_GOOGLE_ANALYTICS_ID = config.get('WOI_GOOGLE_ANALYTICS_ID', default='')

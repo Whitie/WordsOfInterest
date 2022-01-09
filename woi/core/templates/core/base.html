@@ -1,4 +1,4 @@
-<!doctype html>{% load static %}{% load i18n %}
+<!doctype html>{% load static i18n woi_tags %}
 <html>
   <head>
     <meta charset="utf-8">
@@ -7,6 +7,7 @@
     <link href="{% static '3rd/css/bulma.min.css' %}" rel="stylesheet">
     <link href="{% static '3rd/css/easymde.min.css' %}" rel="stylesheet">
     <title>{{ woi_title|default:'WoI' }}</title>
+    {% google_analytics %}
     {% block head %}{% endblock %}
   </head>
   <body>

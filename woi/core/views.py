@@ -1,5 +1,6 @@
 import json
 
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import (
     authenticate, login as auth_login, logout as auth_logout
@@ -109,13 +110,19 @@ def approve_comments(req, post_id=None):
 
 
 @permission_required('core.can_write', raise_exception=True)
-@require_POST
+@require_http_methods(['PATCH'])
 def approve_comment(req):
     data = json.loads(req.body)
     try:
         comment = Comment.objects.get(pk=data['id'])
         if data.get('command', 'ok') == 'delete':
-            comment.body = _('[Deleted]')
+            deleted_message = getattr(
+                settings, 'WOI_COMMENT_DELETED_MESSAGE', ''
+            )
+            if deleted_message:
+                comment.body = deleted_message
+            else:
+                comment.body = _('[Deleted]')
         comment.active = True
         comment.save()
         result = dict(result='success')
@@ -132,7 +139,21 @@ def publish_articles(req):
     posts = Post.objects.select_related().filter(
         status=Post.Status.DRAFT
     ).order_by('created')
-    return render(req, 'core/articles.html', {'posts': posts})
+    ctx = dict(posts=posts, publish=True)
+    return render(req, 'core/index.html', ctx)
+
+
+@permission_required('core.can_publish', raise_exception=True)
+@require_http_methods(['PATCH'])
+def publish_article(req):
+    try:
+        data = json.loads(req.body)
+        post = get_object_or_404(Post, pk=data['id'])
+        post.status = Post.Status.PUBLISHED
+        post.save()
+    except Exception as err:
+        return JsonResponse({'result': 'error', 'error': str(err)})
+    return JsonResponse({'result': 'success'})
 
 
 @require_POST

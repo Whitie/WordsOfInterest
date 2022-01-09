@@ -36,7 +36,10 @@ class PostAdmin(admin.ModelAdmin):
         if change:
             p = Post.objects.get(pk=obj.id)
             cd = form.cleaned_data
-            if p.title != cd['title'] or p.raw != cd['raw']:
+            if (
+                ('title' in cd and p.title != cd['title'])
+                or ('raw' in cd and p.raw != cd['raw'])
+            ):
                 obj.updated = timezone.now()
         super().save_model(request, obj, form, change)
 

@@ -21,6 +21,7 @@ urlpatterns = [
     path('comment/save/', views.save_comment, name='save-comment'),
     path('write-article/', views.edit_article, name='write-article'),
     path('edit-article/<slug:slug>/', views.edit_article, name='edit-article'),
+    path('publish-article/', views.publish_article, name='publish-article'),
     path('upload/', views.image_upload, name='upload'),
     path('_convert_markdown/', views.markdown_preview, name='preview'),
     path('extensions/', views.extensions, name='extensions'),

@@ -148,6 +148,7 @@ MESSAGE_TAGS = {
 }
 WOI_TITLE = ''
 WOI_SUBTITLE = ''
+WOI_COMMENT_DELETED_MESSAGE = ''
 WOI_FOOTER = True
 WOI_CONTENT_LICENSE = {
     'url': 'https://creativecommons.org/licenses/by-nd/4.0/legalcode',

@@ -56,6 +56,15 @@
                     {% endif %}
                     <span id="seen-{{ post.id }}"></span>
                 </small>
+                {% if post.status == 'draft' and perms.core.can_publish %}
+                <br>
+                <p id="result-{{ post.id }}">
+                    <button id="ok-{{ post.id }}" class="button is-small is-success" onclick="publish({{ post.id }});" data-url="{% url 'core:publish-article' %}">
+                        <span class="icon"><i class="far fa-check-circle"></i></span>
+                        <span>{% translate 'Publish' %}</span>
+                    </button>
+                </p>
+                {% endif %}
             </div>
         </div>
     </article>

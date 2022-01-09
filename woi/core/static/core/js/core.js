@@ -34,6 +34,49 @@ function mark_as_read(url) {
     return date;
 }
 
+function publish(post_id) {
+    let btn = document.getElementById('ok-' + post_id);
+    let result = document.getElementById('result-' + post_id);
+    m.request({
+        method: 'PATCH',
+        url: btn.dataset.url,
+        headers: {'X-CSRFToken': getCookie('csrftoken')},
+        body: {id: post_id}
+    }).then(function(res) {
+        if (res.result === 'success') {
+            btn.disabled = true;
+            result.innerHTML += '<span class="has-text-success">' + gettext('Published') + '</span>';
+        } else {
+            alert(res.error);
+        }
+    });
+}
+
+function approve(command, id) {
+    let data = {command: command, id: id};
+    let del = document.getElementById('del-' + id);
+    let ok = document.getElementById('ok-' + id);
+    let body = document.getElementById('body-' + id);
+    m.request({
+        method: 'PATCH',
+        url: body.dataset.url,
+        headers: {'X-CSRFToken': getCookie('csrftoken')},
+        body: data
+    }).then(function(res){
+        if (res.result === 'success') {
+            del.disabled = true;
+            ok.disabled = true;
+            if (command === 'ok') {
+                body.innerHTML += '<br><span class="has-text-success">' + gettext('Published') + '</span>';
+            } else {
+                body.innerHTML = '<span class="has-text-danger">' + gettext('[Deleted]') + '</span>';
+            }
+        } else {
+            alert(res.error);
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
       const $notification = $delete.parentNode;

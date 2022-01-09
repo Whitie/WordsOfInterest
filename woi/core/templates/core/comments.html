@@ -21,7 +21,9 @@
                 </span>
             </a>
             {% endif %}
-            <p id="body-{{ comment.id }}">{{ comment.body }}</p>
+            <p id="body-{{ comment.id }}" data-url="{% url "core:approve-comment" %}">
+                {{ comment.body }}
+            </p>
             <div class="field is-grouped">
                 <p class="control">
                     <button id="ok-{{ comment.id }}" class="button is-small is-success" onclick="approve('ok', {{ comment.id }});">
@@ -42,33 +44,4 @@
 {% empty %}
 <h3>{% translate 'No comments to approve' %}</h3>
 {% endfor %}
-{% endblock %}
-
-{% block js %}
-<script>
-function approve(command, id) {
-    let data = {command: command, id: id};
-    let del = document.getElementById('del-' + id);
-    let ok = document.getElementById('ok-' + id);
-    let body = document.getElementById('body-' + id);
-    m.request({
-        method: 'POST',
-        url: '{% url "core:approve-comment" %}',
-        headers: {'X-CSRFToken': getCookie('csrftoken')},
-        body: data
-    }).then(function(res){
-        if (res.result === 'success') {
-            del.disabled = true;
-            ok.disabled = true;
-            if (command === 'ok') {
-                body.innerHTML += '<br><span class="has-text-success">' + gettext('Published') + '</span>';
-            } else {
-                body.innerHTML = '<span class="has-text-danger">' + gettext('[Deleted]') + '</span>';
-            }
-        } else {
-            alert(res.error);
-        }
-    });
-}
-</script>
 {% endblock %}

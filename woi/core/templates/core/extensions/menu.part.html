@@ -4,7 +4,7 @@
         <span class="icon"><i class="fas fa-blog"></i></span>
         <span>{% translate 'Blog' %}</span>
     </p>
-    <ul class="menu-list">
+    <ul class="menu-list" style="list-style-type: none; margin: 0;">
         <li>
             <a href="{% url 'core:index' %}">
                 <span class="icon"><i class="fas fa-home"></i></span>
@@ -25,7 +25,7 @@
         <span class="icon"><i class="far fa-newspaper"></i></span>
         <span>{% translate 'Articles' %}</span>
     </p>
-    <ul class="menu-list">
+    <ul class="menu-list" style="list-style-type: none; margin: 0;">
         {% if perms.core.can_write %}
         <li>
             <a href="{% url 'core:write-article' %}">
@@ -61,7 +61,7 @@
         <span class="icon"><i class="fas fa-toolbox"></i></span>    
         <span>{% translate 'Administration' %}</span>
     </p>
-    <ul class="menu-list">
+    <ul class="menu-list" style="list-style-type: none; margin: 0;">
         <li>
             <a href="{% url 'admin:index' %}">
                 <span class="icon"><i class="fas fa-tools"></i></span>

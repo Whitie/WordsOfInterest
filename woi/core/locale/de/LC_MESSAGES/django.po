@@ -1,0 +1,498 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-09 20:09+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: core/forms.py:9
+msgid "Username"
+msgstr ""
+
+#: core/forms.py:13
+msgid "Password"
+msgstr ""
+
+#: core/forms.py:20 core/models.py:42
+msgid "Title"
+msgstr ""
+
+#: core/forms.py:24 core/models.py:48 core/templates/core/article.html:31
+#: core/templates/core/article.inc.html:7
+msgid "Image"
+msgstr ""
+
+#: core/forms.py:28
+msgid "Markdown Text"
+msgstr ""
+
+#: core/forms.py:33
+msgid "Tag(s)"
+msgstr ""
+
+#: core/forms.py:37
+msgid "Allow comments"
+msgstr ""
+
+#: core/forms.py:40 core/templates/core/article.inc.html:64
+msgid "Publish"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:27
+msgid "List of years"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:28
+msgid "List of all years with articles"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:33
+msgid "List of tags"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:34
+msgid "List of all tags with articles"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:39
+msgid "Menu"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:44
+msgid "Sign in/out"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:45
+msgid "Form to enter credentials or to sign out"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:50
+msgid "Go to"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:51
+msgid "Dropdown with all published articles"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:59
+msgid "Terms"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:63
+msgid "Privacy"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:69
+msgid "Setup base configuration for WoI"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:75
+msgid "### Creating menus"
+msgstr ""
+
+#: core/management/commands/woi_run_first.py:77
+msgid "### Creating standard pages"
+msgstr ""
+
+#: core/models.py:19 core/models.py:31
+msgid "Tag"
+msgstr ""
+
+#: core/models.py:20 core/models.py:163
+msgid "Description"
+msgstr ""
+
+#: core/models.py:32 core/models.py:59
+msgid "Tags"
+msgstr ""
+
+#: core/models.py:39
+msgid "Draft"
+msgstr ""
+
+#: core/models.py:40
+msgid "Published"
+msgstr ""
+
+#: core/models.py:43
+msgid "Slug"
+msgstr ""
+
+#: core/models.py:46
+msgid "Author"
+msgstr ""
+
+#: core/models.py:50 core/models.py:190
+msgid "Raw content"
+msgstr ""
+
+#: core/models.py:52 core/models.py:127
+msgid "Created"
+msgstr ""
+
+#: core/models.py:53 core/templates/core/article.inc.html:52
+msgid "Updated"
+msgstr ""
+
+#: core/models.py:55
+msgid "Status"
+msgstr ""
+
+#: core/models.py:61
+msgid "Comments allowed"
+msgstr ""
+
+#: core/models.py:62 core/templates/core/article.inc.html:39
+msgid "Views"
+msgstr ""
+
+#: core/models.py:104
+msgid "{}sec"
+msgstr ""
+
+#: core/models.py:107
+msgid "{}min"
+msgstr ""
+
+#: core/models.py:110 core/models.py:121 core/models.py:141
+msgid "Post"
+msgstr ""
+
+#: core/models.py:111
+msgid "Posts"
+msgstr ""
+
+#: core/models.py:114
+msgid "Can write Post"
+msgstr ""
+
+#: core/models.py:115
+msgid "Can publish Post"
+msgstr ""
+
+#: core/models.py:124 core/models.py:162 core/models.py:188
+msgid "Name"
+msgstr ""
+
+#: core/models.py:125
+msgid "Email"
+msgstr ""
+
+#: core/models.py:126
+msgid "Message"
+msgstr ""
+
+#: core/models.py:128 core/models.py:171
+msgid "Active"
+msgstr ""
+
+#: core/models.py:131
+msgid "Comment {} by {}"
+msgstr ""
+
+#: core/models.py:134
+msgid "Comment"
+msgstr ""
+
+#: core/models.py:135 core/templates/core/article.html:50
+#: core/templates/core/edit_article.html:58
+msgid "Comments"
+msgstr ""
+
+#: core/models.py:144
+msgid "File"
+msgstr ""
+
+#: core/models.py:145
+msgid "Caption"
+msgstr ""
+
+#: core/models.py:151
+msgid "Post Image"
+msgstr ""
+
+#: core/models.py:152
+msgid "Post Images"
+msgstr ""
+
+#: core/models.py:159
+msgid "Left"
+msgstr ""
+
+#: core/models.py:160
+msgid "Right"
+msgstr ""
+
+#: core/models.py:164
+msgid "Side"
+msgstr ""
+
+#: core/models.py:166
+msgid "Position"
+msgstr ""
+
+#: core/models.py:167
+msgid "Function"
+msgstr ""
+
+#: core/models.py:168
+msgid "Login required"
+msgstr ""
+
+#: core/models.py:169
+msgid "JS File"
+msgstr ""
+
+#: core/models.py:170
+msgid "Added"
+msgstr ""
+
+#: core/models.py:172
+msgid "Errors"
+msgstr ""
+
+#: core/models.py:182
+msgid "Extension"
+msgstr ""
+
+#: core/models.py:183
+msgid "Extensions"
+msgstr ""
+
+#: core/models.py:189
+msgid "Identifier"
+msgstr ""
+
+#: core/models.py:192
+msgid "Show in menu"
+msgstr ""
+
+#: core/models.py:193
+msgid "Font Awesome Icon"
+msgstr ""
+
+#: core/models.py:204
+msgid "Site Info"
+msgstr ""
+
+#: core/models.py:205
+msgid "Site Infos"
+msgstr ""
+
+#: core/templates/core/article.html:5 core/templates/core/article.inc.html:18
+msgid "Reading time"
+msgstr ""
+
+#: core/templates/core/article.html:9
+msgid "Edit article"
+msgstr ""
+
+#: core/templates/core/article.html:17
+msgid "Permalink to this article"
+msgstr ""
+
+#: core/templates/core/article.html:22 core/templates/core/article.inc.html:26
+#: core/templates/core/base.html:48
+msgid "by"
+msgstr ""
+
+#: core/templates/core/article.html:23
+msgid "on"
+msgstr ""
+
+#: core/templates/core/article.html:25
+msgid "last updated on"
+msgstr ""
+
+#: core/templates/core/article.html:76
+msgid "Leave a comment"
+msgstr ""
+
+#: core/templates/core/article.html:82
+msgid "No comments allowed."
+msgstr ""
+
+#: core/templates/core/article.inc.html:14
+msgid "Written"
+msgstr ""
+
+#: core/templates/core/article.inc.html:45
+msgid "Comments:"
+msgstr ""
+
+#: core/templates/core/base.html:49
+msgid "The source code is licensed"
+msgstr ""
+
+#: core/templates/core/base.html:51
+msgid "The website content is licensed"
+msgstr ""
+
+#: core/templates/core/comments.html:5
+#: core/templates/core/extensions/menu.part.html:40
+msgid "Approve comments"
+msgstr ""
+
+#: core/templates/core/comments.html:14
+msgid "Article:"
+msgstr ""
+
+#: core/templates/core/comments.html:31
+msgid "Approve"
+msgstr ""
+
+#: core/templates/core/comments.html:37
+msgid "Delete"
+msgstr ""
+
+#: core/templates/core/comments.html:45
+msgid "No comments to approve"
+msgstr ""
+
+#: core/templates/core/edit_article.html:12
+msgid "Edit Article"
+msgstr ""
+
+#: core/templates/core/edit_article.html:13
+msgid "Write new Article"
+msgstr ""
+
+#: core/templates/core/edit_article.html:29
+msgid "Choose an image..."
+msgstr ""
+
+#: core/templates/core/edit_article.html:34
+msgid "No file selected (optional)"
+msgstr ""
+
+#: core/templates/core/edit_article.html:66
+msgid "Direct publishing"
+msgstr ""
+
+#: core/templates/core/edit_article.html:77
+msgid "Save"
+msgstr ""
+
+#: core/templates/core/edit_article.html:83
+msgid "Cancel"
+msgstr ""
+
+#: core/templates/core/extensions/go_to.part.html:5
+msgid "Go to article"
+msgstr ""
+
+#: core/templates/core/extensions/list_of_tags.part.html:4
+msgid "Articles by tag"
+msgstr ""
+
+#: core/templates/core/extensions/list_of_years.part.html:4
+msgid "Articles by year"
+msgstr ""
+
+#: core/templates/core/extensions/menu.part.html:5
+msgid "Blog"
+msgstr ""
+
+#: core/templates/core/extensions/menu.part.html:11
+msgid "Home"
+msgstr ""
+
+#: core/templates/core/extensions/menu.part.html:26
+msgid "Articles"
+msgstr ""
+
+#: core/templates/core/extensions/menu.part.html:33
+msgid "Write article"
+msgstr ""
+
+#: core/templates/core/extensions/menu.part.html:51
+msgid "Publish articles"
+msgstr ""
+
+#: core/templates/core/extensions/menu.part.html:62
+msgid "Administration"
+msgstr ""
+
+#: core/templates/core/extensions/menu.part.html:68
+msgid "Backend"
+msgstr ""
+
+#: core/templates/core/extensions/sign_in_out.part.html:9
+msgid "Author:"
+msgstr ""
+
+#: core/templates/core/extensions/sign_in_out.part.html:10
+msgid "Superuser:"
+msgstr ""
+
+#: core/templates/core/extensions/sign_in_out.part.html:11
+msgid "Articles:"
+msgstr ""
+
+#: core/templates/core/extensions/sign_in_out.part.html:13
+msgid "Member since"
+msgstr ""
+
+#: core/templates/core/extensions/sign_in_out.part.html:19
+msgid "Logout"
+msgstr ""
+
+#: core/templates/core/extensions/sign_in_out.part.html:26
+msgid "Sign in"
+msgstr ""
+
+#: core/templates/core/extensions/sign_in_out.part.html:49
+msgid "Submit"
+msgstr ""
+
+#: core/templates/core/index.html:5
+msgid "Remove filter"
+msgstr ""
+
+#: core/templates/core/index.html:15
+msgid "No articles"
+msgstr ""
+
+#: core/views.py:26
+msgid "Last 10 Articles"
+msgstr ""
+
+#: core/views.py:34
+msgid "Articles {}"
+msgstr ""
+
+#: core/views.py:41
+msgid "Articles tagged {}"
+msgstr ""
+
+#: core/views.py:78
+msgid "Article was saved."
+msgstr ""
+
+#: core/views.py:125
+msgid "[Deleted]"
+msgstr ""
+
+#: core/views.py:166
+msgid "Login successful."
+msgstr ""
+
+#: core/views.py:168
+msgid "Login failed, check username and/or password."
+msgstr ""
+
+#: core/views.py:175
+msgid "Your are now logged out."
+msgstr ""

@@ -11,13 +11,14 @@ TERMS_TPL = """\
 
 Website Owner: YOUR NAME HERE
 
-This is the standard template. The Owner has not written the full\
+This is the standard template. The Owner has not written the full
 terms yet.
 """
 PRIVACY_TPL = """\
 ## Privacy
 
-No content yet.
+This site uses cookies to track user sessions. If Google Analytics is
+enabled by the admin, it uses cookies for statistics.
 """
 
 
@@ -75,3 +76,4 @@ class Command(BaseCommand):
         create_menus()
         self.stdout.write(_('### Creating standard pages'))
         create_pages()
+        management.call_command('collectstatic')

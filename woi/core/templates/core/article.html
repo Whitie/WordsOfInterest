@@ -106,13 +106,14 @@ Comment.data.name = '{{ user.username }}';
 {% endif %}
 let Unpublished = {
     view: function() {
+        let msg = '{% translate "Comments waiting for approval: " %}';
         {% if perms.core.can_write %}
         return m('p',
             m('a', {href: '{% url "core:approve-comments" post.id %}'},
-              gettext('Comments waiting for approval: ') + count)
+              msg + count)
         );
         {% else %}
-        return m('p', gettext('Comments waiting for approval: ') + count);
+        return m('p', msg + count);
         {% endif %}
     }
 };

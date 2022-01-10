@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 09:00+0100\n"
+"POT-Creation-Date: 2022-01-10 09:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -336,6 +336,10 @@ msgstr "Hinterlassen Sie einen Kommentar"
 #: core/templates/core/article.html:82
 msgid "No comments allowed."
 msgstr "Keine Kommentare zugelassen."
+
+#: core/templates/core/article.html:109
+msgid "Comments waiting for approval: "
+msgstr "Noch nicht freigegebene Kommentare: "
 
 #: core/templates/core/article.inc.html:14
 msgid "Written"

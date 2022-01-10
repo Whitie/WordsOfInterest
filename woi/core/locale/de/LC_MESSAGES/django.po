@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-09 20:09+0100\n"
+"POT-Creation-Date: 2022-01-10 09:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: core/builtin_extensions.py:73
+msgid "Search for \"{}\""
+msgstr "Suche nach \"{}\""
+
 #: core/forms.py:9
 msgid "Username"
-msgstr ""
+msgstr "Benutzername"
 
 #: core/forms.py:13
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 #: core/forms.py:20 core/models.py:42
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: core/forms.py:24 core/models.py:48 core/templates/core/article.html:31
 #: core/templates/core/article.inc.html:7
 msgid "Image"
-msgstr ""
+msgstr "Bild"
 
 #: core/forms.py:28
 msgid "Markdown Text"
@@ -44,67 +49,75 @@ msgstr ""
 
 #: core/forms.py:37
 msgid "Allow comments"
-msgstr ""
+msgstr "Kommentare erlauben"
 
 #: core/forms.py:40 core/templates/core/article.inc.html:64
 msgid "Publish"
-msgstr ""
+msgstr "Veröffentlichen"
 
 #: core/management/commands/woi_run_first.py:27
 msgid "List of years"
-msgstr ""
+msgstr "Liste nach Jahren"
 
 #: core/management/commands/woi_run_first.py:28
 msgid "List of all years with articles"
-msgstr ""
+msgstr "Liste aller Jahre, die Artikel haben"
 
 #: core/management/commands/woi_run_first.py:33
 msgid "List of tags"
-msgstr ""
+msgstr "Liste der Tags"
 
 #: core/management/commands/woi_run_first.py:34
 msgid "List of all tags with articles"
-msgstr ""
+msgstr "Liste aller Tags, die in Verwendung sind"
 
 #: core/management/commands/woi_run_first.py:39
 msgid "Menu"
-msgstr ""
+msgstr "Menü"
 
 #: core/management/commands/woi_run_first.py:44
 msgid "Sign in/out"
-msgstr ""
+msgstr "An-/Abmelden"
 
 #: core/management/commands/woi_run_first.py:45
 msgid "Form to enter credentials or to sign out"
-msgstr ""
+msgstr "Formular zum An- bzw. Abmelden"
 
 #: core/management/commands/woi_run_first.py:50
-msgid "Go to"
-msgstr ""
+msgid "Simple Search"
+msgstr "Einfache Suche"
 
 #: core/management/commands/woi_run_first.py:51
+msgid "Simple search in title and raw (Markdown) body."
+msgstr "Einfache Suche in Titel und (Markdown) Text."
+
+#: core/management/commands/woi_run_first.py:56
+msgid "Go to"
+msgstr "Gehe zu"
+
+#: core/management/commands/woi_run_first.py:57
 msgid "Dropdown with all published articles"
-msgstr ""
+msgstr "Dropdown mit allen veröffentlichten Artikeln"
 
-#: core/management/commands/woi_run_first.py:59
+#: core/management/commands/woi_run_first.py:65
 msgid "Terms"
-msgstr ""
-
-#: core/management/commands/woi_run_first.py:63
-msgid "Privacy"
-msgstr ""
+msgstr "Impressum"
 
 #: core/management/commands/woi_run_first.py:69
-msgid "Setup base configuration for WoI"
-msgstr ""
+msgid "Privacy"
+msgstr "Datenschutz"
 
 #: core/management/commands/woi_run_first.py:75
-msgid "### Creating menus"
-msgstr ""
+msgid "Setup base configuration for WoI"
+msgstr "Basiskonfiguration für WoI erstellen"
 
-#: core/management/commands/woi_run_first.py:77
+#: core/management/commands/woi_run_first.py:81
+msgid "### Creating menus"
+msgstr "### Erstelle Menüs"
+
+#: core/management/commands/woi_run_first.py:83
 msgid "### Creating standard pages"
-msgstr ""
+msgstr "### Erstelle Standardseiten"
 
 #: core/models.py:19 core/models.py:31
 msgid "Tag"
@@ -112,7 +125,7 @@ msgstr ""
 
 #: core/models.py:20 core/models.py:163
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: core/models.py:32 core/models.py:59
 msgid "Tags"
@@ -120,11 +133,11 @@ msgstr ""
 
 #: core/models.py:39
 msgid "Draft"
-msgstr ""
+msgstr "Entwurf"
 
 #: core/models.py:40
 msgid "Published"
-msgstr ""
+msgstr "Veröffentlicht"
 
 #: core/models.py:43
 msgid "Slug"
@@ -132,31 +145,31 @@ msgstr ""
 
 #: core/models.py:46
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: core/models.py:50 core/models.py:190
 msgid "Raw content"
-msgstr ""
+msgstr "Quelltext"
 
 #: core/models.py:52 core/models.py:127
 msgid "Created"
-msgstr ""
+msgstr "Erstellt"
 
 #: core/models.py:53 core/templates/core/article.inc.html:52
 msgid "Updated"
-msgstr ""
+msgstr "Bearbeitet"
 
 #: core/models.py:55
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: core/models.py:61
 msgid "Comments allowed"
-msgstr ""
+msgstr "Kommentare erlaubt"
 
 #: core/models.py:62 core/templates/core/article.inc.html:39
 msgid "Views"
-msgstr ""
+msgstr "Leser"
 
 #: core/models.py:104
 msgid "{}sec"
@@ -168,19 +181,19 @@ msgstr ""
 
 #: core/models.py:110 core/models.py:121 core/models.py:141
 msgid "Post"
-msgstr ""
+msgstr "Artikel"
 
 #: core/models.py:111
 msgid "Posts"
-msgstr ""
+msgstr "Artikel"
 
 #: core/models.py:114
 msgid "Can write Post"
-msgstr ""
+msgstr "Darf Artikel schreiben"
 
 #: core/models.py:115
 msgid "Can publish Post"
-msgstr ""
+msgstr "Darf Artikel veröffentlichen"
 
 #: core/models.py:124 core/models.py:162 core/models.py:188
 msgid "Name"
@@ -192,52 +205,52 @@ msgstr ""
 
 #: core/models.py:126
 msgid "Message"
-msgstr ""
+msgstr "Nachricht"
 
 #: core/models.py:128 core/models.py:171
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: core/models.py:131
 msgid "Comment {} by {}"
-msgstr ""
+msgstr "Kommentar {} von {}"
 
 #: core/models.py:134
 msgid "Comment"
-msgstr ""
+msgstr "Kommentar"
 
 #: core/models.py:135 core/templates/core/article.html:50
 #: core/templates/core/edit_article.html:58
 msgid "Comments"
-msgstr ""
+msgstr "Kommentare"
 
 #: core/models.py:144
 msgid "File"
-msgstr ""
+msgstr "Datei"
 
 #: core/models.py:145
 msgid "Caption"
-msgstr ""
+msgstr "Beschriftung"
 
 #: core/models.py:151
 msgid "Post Image"
-msgstr ""
+msgstr "Artikelbild"
 
 #: core/models.py:152
 msgid "Post Images"
-msgstr ""
+msgstr "Artikelbilder"
 
 #: core/models.py:159
 msgid "Left"
-msgstr ""
+msgstr "Links"
 
 #: core/models.py:160
 msgid "Right"
-msgstr ""
+msgstr "Rechts"
 
 #: core/models.py:164
 msgid "Side"
-msgstr ""
+msgstr "Seite"
 
 #: core/models.py:166
 msgid "Position"
@@ -245,39 +258,39 @@ msgstr ""
 
 #: core/models.py:167
 msgid "Function"
-msgstr ""
+msgstr "Funktion"
 
 #: core/models.py:168
 msgid "Login required"
-msgstr ""
+msgstr "Anmeldung erforderlich"
 
 #: core/models.py:169
 msgid "JS File"
-msgstr ""
+msgstr "JS Datei"
 
 #: core/models.py:170
 msgid "Added"
-msgstr ""
+msgstr "Hinzugefügt"
 
 #: core/models.py:172
 msgid "Errors"
-msgstr ""
+msgstr "Fehler"
 
 #: core/models.py:182
 msgid "Extension"
-msgstr ""
+msgstr "Erweiterung"
 
 #: core/models.py:183
 msgid "Extensions"
-msgstr ""
+msgstr "Erweiterungen"
 
 #: core/models.py:189
 msgid "Identifier"
-msgstr ""
+msgstr "Kennung"
 
 #: core/models.py:192
 msgid "Show in menu"
-msgstr ""
+msgstr "Im Menü anzeigen"
 
 #: core/models.py:193
 msgid "Font Awesome Icon"
@@ -285,121 +298,121 @@ msgstr ""
 
 #: core/models.py:204
 msgid "Site Info"
-msgstr ""
+msgstr "Info-Seite"
 
 #: core/models.py:205
 msgid "Site Infos"
-msgstr ""
+msgstr "Info-Seiten"
 
 #: core/templates/core/article.html:5 core/templates/core/article.inc.html:18
 msgid "Reading time"
-msgstr ""
+msgstr "Lesezeit"
 
 #: core/templates/core/article.html:9
 msgid "Edit article"
-msgstr ""
+msgstr "Artikel bearbeiten"
 
 #: core/templates/core/article.html:17
 msgid "Permalink to this article"
-msgstr ""
+msgstr "Permalink zu diesem Artikel"
 
 #: core/templates/core/article.html:22 core/templates/core/article.inc.html:26
 #: core/templates/core/base.html:48
 msgid "by"
-msgstr ""
+msgstr "von"
 
 #: core/templates/core/article.html:23
 msgid "on"
-msgstr ""
+msgstr "am"
 
 #: core/templates/core/article.html:25
 msgid "last updated on"
-msgstr ""
+msgstr "zuletzt überarbeitet am"
 
 #: core/templates/core/article.html:76
 msgid "Leave a comment"
-msgstr ""
+msgstr "Hinterlassen Sie einen Kommentar"
 
 #: core/templates/core/article.html:82
 msgid "No comments allowed."
-msgstr ""
+msgstr "Keine Kommentare zugelassen."
 
 #: core/templates/core/article.inc.html:14
 msgid "Written"
-msgstr ""
+msgstr "Geschrieben"
 
 #: core/templates/core/article.inc.html:45
 msgid "Comments:"
-msgstr ""
+msgstr "Kommentare:"
 
 #: core/templates/core/base.html:49
 msgid "The source code is licensed"
-msgstr ""
+msgstr "Lizenz des Projekts:"
 
 #: core/templates/core/base.html:51
 msgid "The website content is licensed"
-msgstr ""
+msgstr "Lizenz des Inhalts:"
 
 #: core/templates/core/comments.html:5
 #: core/templates/core/extensions/menu.part.html:40
 msgid "Approve comments"
-msgstr ""
+msgstr "Kommentare freigeben"
 
 #: core/templates/core/comments.html:14
 msgid "Article:"
-msgstr ""
+msgstr "Artikel:"
 
 #: core/templates/core/comments.html:31
 msgid "Approve"
-msgstr ""
+msgstr "Freigeben"
 
 #: core/templates/core/comments.html:37
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: core/templates/core/comments.html:45
 msgid "No comments to approve"
-msgstr ""
+msgstr "Keine Kommentare zur Freigabe vorhanden"
 
 #: core/templates/core/edit_article.html:12
 msgid "Edit Article"
-msgstr ""
+msgstr "Artikel bearbeiten"
 
 #: core/templates/core/edit_article.html:13
 msgid "Write new Article"
-msgstr ""
+msgstr "Neuen Artikel verfassen"
 
 #: core/templates/core/edit_article.html:29
 msgid "Choose an image..."
-msgstr ""
+msgstr "Wählen Sie ein Bild..."
 
 #: core/templates/core/edit_article.html:34
 msgid "No file selected (optional)"
-msgstr ""
+msgstr "Keine Datei ausgewählt (optional)"
 
 #: core/templates/core/edit_article.html:66
 msgid "Direct publishing"
-msgstr ""
+msgstr "Direkt veröffentlichen"
 
 #: core/templates/core/edit_article.html:77
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: core/templates/core/edit_article.html:83
 msgid "Cancel"
-msgstr ""
+msgstr "Abbruch"
 
 #: core/templates/core/extensions/go_to.part.html:5
 msgid "Go to article"
-msgstr ""
+msgstr "Gehe zu Artikel"
 
 #: core/templates/core/extensions/list_of_tags.part.html:4
 msgid "Articles by tag"
-msgstr ""
+msgstr "Artikel nach Tag"
 
 #: core/templates/core/extensions/list_of_years.part.html:4
 msgid "Articles by year"
-msgstr ""
+msgstr "Artikel nach Jahr"
 
 #: core/templates/core/extensions/menu.part.html:5
 msgid "Blog"
@@ -407,19 +420,19 @@ msgstr ""
 
 #: core/templates/core/extensions/menu.part.html:11
 msgid "Home"
-msgstr ""
+msgstr "Startseite"
 
 #: core/templates/core/extensions/menu.part.html:26
 msgid "Articles"
-msgstr ""
+msgstr "Artikel"
 
 #: core/templates/core/extensions/menu.part.html:33
 msgid "Write article"
-msgstr ""
+msgstr "Schreiben"
 
 #: core/templates/core/extensions/menu.part.html:51
 msgid "Publish articles"
-msgstr ""
+msgstr "Veröffentlichen"
 
 #: core/templates/core/extensions/menu.part.html:62
 msgid "Administration"
@@ -429,70 +442,78 @@ msgstr ""
 msgid "Backend"
 msgstr ""
 
+#: core/templates/core/extensions/search.html:4
+msgid "Search"
+msgstr "Suche"
+
+#: core/templates/core/extensions/search.html:9
+msgid "Type here..."
+msgstr "Suchbegriff..."
+
 #: core/templates/core/extensions/sign_in_out.part.html:9
 msgid "Author:"
-msgstr ""
+msgstr "Autor:"
 
 #: core/templates/core/extensions/sign_in_out.part.html:10
 msgid "Superuser:"
-msgstr ""
+msgstr "Administrator"
 
 #: core/templates/core/extensions/sign_in_out.part.html:11
 msgid "Articles:"
-msgstr ""
+msgstr "Artikel:"
 
 #: core/templates/core/extensions/sign_in_out.part.html:13
 msgid "Member since"
-msgstr ""
+msgstr "Mitglied seit"
 
 #: core/templates/core/extensions/sign_in_out.part.html:19
 msgid "Logout"
-msgstr ""
+msgstr "Abmelden"
 
 #: core/templates/core/extensions/sign_in_out.part.html:26
 msgid "Sign in"
-msgstr ""
+msgstr "Anmelden"
 
 #: core/templates/core/extensions/sign_in_out.part.html:49
 msgid "Submit"
-msgstr ""
+msgstr "Los"
 
 #: core/templates/core/index.html:5
 msgid "Remove filter"
-msgstr ""
+msgstr "Filter entfernen"
 
 #: core/templates/core/index.html:15
 msgid "No articles"
-msgstr ""
+msgstr "Keine Artikel vorhanden"
 
 #: core/views.py:26
 msgid "Last 10 Articles"
-msgstr ""
+msgstr "Letzte 10 Artikel"
 
 #: core/views.py:34
 msgid "Articles {}"
-msgstr ""
+msgstr "Artikel {}"
 
 #: core/views.py:41
 msgid "Articles tagged {}"
-msgstr ""
+msgstr "Artikel mit Tag {}"
 
 #: core/views.py:78
 msgid "Article was saved."
-msgstr ""
+msgstr "Artikel wurde gespeichert."
 
 #: core/views.py:125
 msgid "[Deleted]"
-msgstr ""
+msgstr "[Gelöscht]"
 
 #: core/views.py:166
 msgid "Login successful."
-msgstr ""
+msgstr "Anmeldung erfolgreich."
 
 #: core/views.py:168
 msgid "Login failed, check username and/or password."
-msgstr ""
+msgstr "Anmeldung fehlgeschlagen. Prüfen Sie Benutzernamen und/oder Passwort."
 
 #: core/views.py:175
 msgid "Your are now logged out."
-msgstr ""
+msgstr "Sie sind jetzt abgemeldet."

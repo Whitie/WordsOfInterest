@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-09 20:10+0100\n"
+"POT-Creation-Date: 2022-01-10 09:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: core/static/3rd/js/easymde.min.js:7
 msgid ""
 "^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)|"
@@ -25,15 +26,15 @@ msgstr ""
 
 #: core/static/core/js/core.js:48 core/static/core/js/core.js:70
 msgid "Published"
-msgstr ""
+msgstr "Veröffentlicht"
 
 #: core/static/core/js/core.js:72
 msgid "[Deleted]"
-msgstr ""
+msgstr "[Gelöscht]"
 
 #: core/static/core/js/core.js:95
 msgid "Read on"
-msgstr ""
+msgstr "Gelesen am"
 
 #: core/static/core/js/core.js:167
 msgid "Name"
@@ -45,12 +46,12 @@ msgstr ""
 
 #: core/static/core/js/core.js:180
 msgid "Not published, only visible for the author of the article."
-msgstr ""
+msgstr "Wird nicht veröffentlicht, nur für den Autor des Artikels sichtbar."
 
 #: core/static/core/js/core.js:192
 msgid "Your text..."
-msgstr ""
+msgstr "Ihr Text..."
 
 #: core/static/core/js/core.js:204
 msgid "Post comment"
-msgstr ""
+msgstr "Kommentar senden"

@@ -107,6 +107,7 @@ function _convert_markdown(str, preview) {
             body: {markdown: str}
         }).then(function(res) {
             preview.innerHTML = res.html;
+            hljs.highlightAll();
         });
     }, {{ woi_preview_timeout_ms }});
     return gettext('Loading...');

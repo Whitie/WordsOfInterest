@@ -88,6 +88,8 @@ class Configuration:
                 return convert(value)
             return ''
         if default != _default:
+            if callable(default):
+                default = default()
             print(f'Key {key} not found, using default: {default}')
             return default
         else:

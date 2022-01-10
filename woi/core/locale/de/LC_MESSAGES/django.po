@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 09:44+0100\n"
+"POT-Creation-Date: 2022-01-10 10:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,11 +111,15 @@ msgstr "Datenschutz"
 msgid "Setup base configuration for WoI"
 msgstr "Basiskonfiguration für WoI erstellen"
 
-#: core/management/commands/woi_run_first.py:81
+#: core/management/commands/woi_run_first.py:82
+msgid "Copy static files to STATIC_ROOT"
+msgstr "Kopiert statische Dateien nach STATIC_ROOT"
+
+#: core/management/commands/woi_run_first.py:89
 msgid "### Creating menus"
 msgstr "### Erstelle Menüs"
 
-#: core/management/commands/woi_run_first.py:83
+#: core/management/commands/woi_run_first.py:91
 msgid "### Creating standard pages"
 msgstr "### Erstelle Standardseiten"
 

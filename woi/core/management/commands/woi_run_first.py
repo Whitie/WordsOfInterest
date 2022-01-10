@@ -74,6 +74,14 @@ def create_pages():
 class Command(BaseCommand):
     help = _('Setup base configuration for WoI')
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--deploy',
+            action='store_true',
+            default=False,
+            help=_('Copy static files to STATIC_ROOT')
+        )
+
     def handle(self, *args, **options):
         management.call_command('migrate')
         if not User.objects.all().count():
@@ -82,4 +90,5 @@ class Command(BaseCommand):
         create_menus()
         self.stdout.write(_('### Creating standard pages'))
         create_pages()
-        management.call_command('collectstatic')
+        if options['deploy']:
+            management.call_command('collectstatic')

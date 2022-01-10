@@ -98,22 +98,18 @@ file_input.onchange = function() {
         file_name.textContent = file_input.files[0].name;
     }
 }
-let last_answer = '';
 function _convert_markdown(str, preview) {
-    let last_two = str.substr(-2);
-    if (last_two.includes('\n') === true || last_two.includes('\r' === true)) {
+    setTimeout(function() {
         m.request({
             method: 'POST',
             headers: {'X-CSRFToken': getCookie('csrftoken')},
             url: '{% url "core:preview" %}',
             body: {markdown: str}
         }).then(function(res) {
-            last_answer = res.html;
             preview.innerHTML = res.html;
         });
-    } else {
-        return last_answer;
-    }
+    }, {{ woi_preview_timeout_ms }});
+    return gettext('Loading...');
 }
 const editor = new EasyMDE({
     element: document.getElementById('id_raw'),

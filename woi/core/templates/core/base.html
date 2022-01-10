@@ -6,6 +6,7 @@
     <link href="{% static '3rd/css/all.min.css' %}" rel="stylesheet">
     <link href="{% static '3rd/css/bulma.min.css' %}" rel="stylesheet">
     <link href="{% static '3rd/css/easymde.min.css' %}" rel="stylesheet">
+    <link href="{% static '3rd/css/github.min.css' %}" rel="stylesheet">
     <title>{{ woi_title|default:'WoI' }}</title>
     {% google_analytics %}
     {% block head %}{% endblock %}
@@ -59,9 +60,11 @@
     {% endif %}
     {{ woi_js|json_script:'woi-js' }}
     <script src="{% url 'javascript-catalog' %}"></script>
+    <script src="{% static '3rd/js/highlight.min.js' %}"></script>
     <script src="{% static '3rd/js/easymde.min.js' %}"></script>
     <script src="{% static '3rd/js/mithril.min.js' %}"></script>
     <script src="{% static 'core/js/core.js' %}"></script>
+    <script>hljs.highlightAll();</script>
     {% if woi_ext_js %}
     <script src="{% url 'core:extensions-js' %}"></script>
     {% endif %}

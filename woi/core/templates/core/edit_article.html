@@ -129,6 +129,9 @@ const editor = new EasyMDE({
     imageUploadEndpoint: '{% url "core:upload" %}',
     imagePathAbsolute: true,
     imageCSRFToken: getCookie('csrftoken'),
+    renderingConfig: {
+        codeSyntaxHighlightning: true
+    },
     toolbar: ['bold', 'italic', 'heading-2', 'heading-3', '|',
               'unordered-list', 'ordered-list', 'quote', '|',
               'link', 'image', 'code', '|',

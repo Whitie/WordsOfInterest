@@ -1,0 +1,19 @@
+{% load i18n %}
+<h3>
+    <span class="icon"><i class="fas fa-search"></i></span>
+    <span>{% translate 'Search' %}</span>
+</h3>
+<form method="get" action="{% url 'core:ext-search' %}">
+    <div class="field">
+        <div class="control has-icons-left">
+            <input class="input" type="text" name="search" placeholder="{% translate 'Type here...' %}">
+            <span class="icon is-small is-left">
+                <i class="fas fa-search"></i>
+            </span>
+        </div>
+    </div>
+    <div class="control is-pulled-right">
+        <button class="button is-primary">{% translate 'Submit' %}</button>
+    </div>
+    <span class="is-clearfix"></span>
+</form>

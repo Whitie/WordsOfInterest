@@ -47,9 +47,15 @@ def create_menus():
         callable='core.builtin_extensions.sign_in_out'
     )
     Extension.objects.get_or_create(
+        name=_('Simple Search'),
+        description=_('Simple search in title and raw (Markdown) body.'),
+        side=Extension.Side.RIGHT, position=2, active=True,
+        callable='core.builtin_extensions.search'
+    )
+    Extension.objects.get_or_create(
         name=_('Go to'),
         description=_('Dropdown with all published articles'),
-        side=Extension.Side.RIGHT, position=2, active=True,
+        side=Extension.Side.RIGHT, position=3, active=True,
         callable='core.builtin_extensions.go_to'
     )
 

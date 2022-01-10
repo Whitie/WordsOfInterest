@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import views
+from . import builtin_extensions as ext, views
 
 app_name = 'core'
 
@@ -27,4 +27,6 @@ urlpatterns = [
     path('extensions/', views.extensions, name='extensions'),
     path('extensions/<side>/', views.extensions, name='extensions'),
     path('extensions-js/', views.extensions_js, name='extensions-js'),
+    # Extensions
+    path('search/', ext.search_result, name='ext-search'),
 ]

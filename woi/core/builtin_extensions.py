@@ -1,3 +1,7 @@
+from django.db.models import Q
+from django.shortcuts import render
+from django.utils.translation import gettext as _
+
 from . import utils
 from .forms import LoginForm
 from .models import Comment, Post, SiteInfo, Tag
@@ -51,3 +55,20 @@ def go_to(req):
     return utils.render_template(
         req, 'core/extensions/go_to.part.html', {'posts': posts}
     )
+
+
+def search(req):
+    return utils.render_template(req, 'core/extensions/search.html')
+
+
+def search_result(req):
+    search = req.GET.get('search', '').strip()
+    if search:
+        posts = Post.objects.select_related().filter(
+            Q(title__icontains=search) | Q(raw__icontains=search),
+            status=Post.Status.PUBLISHED
+        ).order_by('-created')
+    else:
+        posts = []
+    ctx = dict(posts=posts, headline=_('Search for "{}"').format(search))
+    return render(req, 'core/index.html', ctx)

@@ -23,7 +23,7 @@
 {% else %}
 <h3>
     <span class="icon"><i class="fas fa-sign-in-alt"></i></span>
-    {% translate 'Sign in' %}
+    <span>{% translate 'Sign in' %}</span>
 </h3>
 <form method="post" action="{% url 'core:login' %}">
     {% csrf_token %}

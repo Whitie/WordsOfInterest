@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 10:18+0100\n"
+"POT-Creation-Date: 2022-01-10 11:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,71 +55,75 @@ msgstr "Kommentare erlauben"
 msgid "Publish"
 msgstr "Veröffentlichen"
 
-#: core/management/commands/woi_run_first.py:27
+#: core/management/commands/woi_run_first.py:31
 msgid "List of years"
 msgstr "Liste nach Jahren"
 
-#: core/management/commands/woi_run_first.py:28
+#: core/management/commands/woi_run_first.py:32
 msgid "List of all years with articles"
 msgstr "Liste aller Jahre, die Artikel haben"
 
-#: core/management/commands/woi_run_first.py:33
+#: core/management/commands/woi_run_first.py:37
 msgid "List of tags"
 msgstr "Liste der Tags"
 
-#: core/management/commands/woi_run_first.py:34
+#: core/management/commands/woi_run_first.py:38
 msgid "List of all tags with articles"
 msgstr "Liste aller Tags, die in Verwendung sind"
 
-#: core/management/commands/woi_run_first.py:39
+#: core/management/commands/woi_run_first.py:43
 msgid "Menu"
 msgstr "Menü"
 
-#: core/management/commands/woi_run_first.py:44
+#: core/management/commands/woi_run_first.py:48
 msgid "Sign in/out"
 msgstr "An-/Abmelden"
 
-#: core/management/commands/woi_run_first.py:45
+#: core/management/commands/woi_run_first.py:49
 msgid "Form to enter credentials or to sign out"
 msgstr "Formular zum An- bzw. Abmelden"
 
-#: core/management/commands/woi_run_first.py:50
+#: core/management/commands/woi_run_first.py:54
 msgid "Simple Search"
 msgstr "Einfache Suche"
 
-#: core/management/commands/woi_run_first.py:51
+#: core/management/commands/woi_run_first.py:55
 msgid "Simple search in title and raw (Markdown) body."
 msgstr "Einfache Suche in Titel und (Markdown) Text."
 
-#: core/management/commands/woi_run_first.py:56
+#: core/management/commands/woi_run_first.py:60
 msgid "Go to"
 msgstr "Gehe zu"
 
-#: core/management/commands/woi_run_first.py:57
+#: core/management/commands/woi_run_first.py:61
 msgid "Dropdown with all published articles"
 msgstr "Dropdown mit allen veröffentlichten Artikeln"
 
-#: core/management/commands/woi_run_first.py:65
+#: core/management/commands/woi_run_first.py:69
 msgid "Terms"
 msgstr "Impressum"
 
-#: core/management/commands/woi_run_first.py:69
+#: core/management/commands/woi_run_first.py:73
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: core/management/commands/woi_run_first.py:75
+#: core/management/commands/woi_run_first.py:87
 msgid "Setup base configuration for WoI"
 msgstr "Basiskonfiguration für WoI erstellen"
 
-#: core/management/commands/woi_run_first.py:82
+#: core/management/commands/woi_run_first.py:94
 msgid "Copy static files to STATIC_ROOT"
 msgstr "Kopiert statische Dateien nach STATIC_ROOT"
 
-#: core/management/commands/woi_run_first.py:89
+#: core/management/commands/woi_run_first.py:100
+msgid "Store README.md as info page"
+msgstr "Speichert die README.md als Info-Seite"
+
+#: core/management/commands/woi_run_first.py:107
 msgid "### Creating menus"
 msgstr "### Erstelle Menüs"
 
-#: core/management/commands/woi_run_first.py:91
+#: core/management/commands/woi_run_first.py:109
 msgid "### Creating standard pages"
 msgstr "### Erstelle Standardseiten"
 
@@ -321,7 +325,7 @@ msgid "Permalink to this article"
 msgstr "Permalink zu diesem Artikel"
 
 #: core/templates/core/article.html:22 core/templates/core/article.inc.html:26
-#: core/templates/core/base.html:48
+#: core/templates/core/base.html:51
 msgid "by"
 msgstr "von"
 
@@ -353,11 +357,11 @@ msgstr "Geschrieben"
 msgid "Comments:"
 msgstr "Kommentare:"
 
-#: core/templates/core/base.html:49
+#: core/templates/core/base.html:52
 msgid "The source code is licensed"
 msgstr "Lizenz des Projekts:"
 
-#: core/templates/core/base.html:51
+#: core/templates/core/base.html:54
 msgid "The website content is licensed"
 msgstr "Lizenz des Inhalts:"
 

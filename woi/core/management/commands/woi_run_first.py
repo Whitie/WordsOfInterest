@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from django.contrib.auth.models import User
 from django.core import management
 from django.core.management.base import BaseCommand
@@ -6,6 +8,8 @@ from django.utils.translation import gettext as _
 from core.models import Extension, SiteInfo
 
 
+PROJECT_BASE = Path(__file__).resolve().parent.parent
+README = PROJECT_BASE / 'README.md'
 TERMS_TPL = """\
 ## Page details
 
@@ -71,6 +75,14 @@ def create_pages():
     )
 
 
+def add_readme():
+    with README.open() as fp:
+        SiteInfo.objects.get_or_create(
+            name='README', ident='readme', raw=fp.read(),
+            fa_icon='fab fa-readme', show_in_menu=True
+        )
+
+
 class Command(BaseCommand):
     help = _('Setup base configuration for WoI')
 
@@ -81,6 +93,12 @@ class Command(BaseCommand):
             default=False,
             help=_('Copy static files to STATIC_ROOT')
         )
+        parser.add_argument(
+            '--readme',
+            action='store_true',
+            default=False,
+            help=_('Store README.md as info page')
+        )
 
     def handle(self, *args, **options):
         management.call_command('migrate')
@@ -90,5 +108,7 @@ class Command(BaseCommand):
         create_menus()
         self.stdout.write(_('### Creating standard pages'))
         create_pages()
+        if options['readme'] and README.is_file():
+            add_readme()
         if options['deploy']:
-            management.call_command('collectstatic')
+            management.call_command('collectstatic', '--no-input')

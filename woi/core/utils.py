@@ -13,7 +13,7 @@ from .md_extensions import WoiLinkExtension
 
 def create_html(text: str) -> str:
     return markdown.markdown(
-        text, extensions=[WoiLinkExtension(), 'extra', 'toc']
+        text, extensions=[WoiLinkExtension(), 'extra', 'toc', 'codehilite']
     )
 
 

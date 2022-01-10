@@ -107,7 +107,6 @@ function _convert_markdown(str, preview) {
             body: {markdown: str}
         }).then(function(res) {
             preview.innerHTML = res.html;
-            hljs.highlightAll();
         });
     }, {{ woi_preview_timeout_ms }});
     return gettext('Loading...');
@@ -126,9 +125,6 @@ const editor = new EasyMDE({
     imageUploadEndpoint: '{% url "core:upload" %}',
     imagePathAbsolute: true,
     imageCSRFToken: getCookie('csrftoken'),
-    renderingConfig: {
-        codeSyntaxHighlightning: true
-    },
     toolbar: ['bold', 'italic', 'heading-2', 'heading-3', '|',
               'unordered-list', 'ordered-list', 'quote', '|',
               'link', 'image', 'code', '|',

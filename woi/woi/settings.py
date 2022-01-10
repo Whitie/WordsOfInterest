@@ -151,7 +151,6 @@ WOI_SUBTITLE = ''
 WOI_COMMENT_DELETED_MESSAGE = ''
 WOI_FOOTER = True
 WOI_PREVIEW_TIMEOUT_MS = 1000
-WOI_HLJS_THEME = 'light'
 WOI_CONTENT_LICENSE = {
     'url': 'https://creativecommons.org/licenses/by-nd/4.0/legalcode',
     'text': 'CC BY-ND 4.0',

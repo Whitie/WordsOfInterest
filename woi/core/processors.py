@@ -21,6 +21,7 @@ def add_woi_variables(req):
         'woi_title': getattr(settings, 'WOI_TITLE', ''),
         'woi_subtitle': getattr(settings, 'WOI_SUBTITLE', ''),
         'woi_footer': getattr(settings, 'WOI_FOOTER', True),
+        'woi_feeds': getattr(settings, 'WOI_FEEDS', True),
         'woi_content_license': settings.WOI_CONTENT_LICENSE,
         'woi_preview_timeout_ms': getattr(
             settings, 'WOI_PREVIEW_TIMEOUT_MS', 1000

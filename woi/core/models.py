@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify, Truncator
 from django.utils.translation import gettext_lazy as _
@@ -67,6 +68,9 @@ class Post(models.Model):
     def save(self, *args, **kw) -> None:
         self.html = utils.create_html(self.raw)
         super().save(*args, **kw)
+
+    def get_absolute_url(self) -> str:
+        return reverse('core:article', kwargs={'slug': self.slug})
 
     def get_plaintext(self, max_chars: int = 0) -> str:
         plain = utils.unmark(self.raw)

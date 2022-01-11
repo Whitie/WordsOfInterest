@@ -42,9 +42,22 @@
       </div>
       {% endblock %}
     </div>
-    {% if woi_footer %}
+    {% if woi_footer or woi_feeds %}
     <footer class="footer">
       <div class="content has-text-centered">
+        {% if woi_feeds %}
+        <p title="{% translate 'Feeds' %}">
+          <span class="icon has-text-warning-dark"><i class="fas fa-rss-square"></i></span>
+          <a href="{% url 'woi-rss' %}">
+            <span>RSS</span>
+          </a>
+          <span class="icon"><i class="fas fa-grip-lines-vertical"></i></span>
+          <a href="{% url 'woi-atom' %}">
+            <span>Atom</span>
+          </a>
+        </p>
+        {% endif %}
+        {% if woi_footer %}
         <p>
           <a href="https://github.com/Whitie/WordsOfInterest" class="has-text-weight-bold">
             WoI
@@ -55,6 +68,7 @@
           {% translate 'The website content is licensed' %}
           <a href="{{ woi_content_license.url }}">{{ woi_content_license.text }}</a>.
         </p>
+        {% endif %}
       </div>
     </footer>
     {% endif %}

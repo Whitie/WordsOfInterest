@@ -19,9 +19,14 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.i18n import JavaScriptCatalog
 
+from core import feeds, views
+
 
 urlpatterns = [
+    path('', views.index, name='index'),
     path('core/', include('core.urls', namespace='core')),
+    path('feeds/rss/', feeds.WoiRssNewsFeed(), name='woi-rss'),
+    path('feeds/atom/', feeds.WoiAtomNewsFeed(), name='woi-atom'),
     path('admin/', admin.site.urls),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 ]

@@ -83,8 +83,9 @@ class Configuration:
                 if convert == list:
                     if self.list_item_separator == ' ':
                         value = value.strip('()')
-                    return [x.strip() for x in
-                            value.split(self.list_item_separator) if x.strip()]
+                    return [x.strip(' \'"') for x in
+                            value.split(self.list_item_separator)
+                            if x.strip(' \'"')]
                 return convert(value)
             return ''
         if default != _default:

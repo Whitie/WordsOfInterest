@@ -1,5 +1,6 @@
-from pathlib import Path
+import os
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core import management
 from django.core.management.base import BaseCommand
@@ -8,7 +9,8 @@ from django.utils.translation import gettext as _
 from core.models import Extension, SiteInfo
 
 
-PROJECT_BASE = Path(__file__).resolve().parent.parent
+PROJECT_BASE = settings.BASE_PATH.parent
+ENV_PATH = settings.BASE_PATH / '.env'
 README = PROJECT_BASE / 'README.md'
 TERMS_TPL = """\
 ## Page details
@@ -85,6 +87,13 @@ def add_readme():
 
 class Command(BaseCommand):
     help = _('Setup base configuration for WoI')
+    woi_env = {
+        'debug': 'off',
+        'secret_key': os.urandom(40),
+        'allowed_hosts': ['127.0.0.1'],
+        'woi_title': '',
+        'woi_subtitle': '',
+    }
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -112,3 +121,24 @@ class Command(BaseCommand):
             add_readme()
         if options['deploy']:
             management.call_command('collectstatic', '--no-input')
+        self._ask_for_local_install()
+        self._create_env_file()
+
+    def _create_env_file(self):
+        with ENV_PATH.open('w', encoding='utf-8') as fp:
+            for k, v in self.woi_env.items():
+                if isinstance(v, list):
+                    val = ' '.join(v)
+                elif isinstance(v, bool):
+                    val = 'on' if v else 'off'
+                else:
+                    val = v
+                fp.write(f'{k.upper()}={val}{os.linesep}')
+
+    def _ask_for_local_install(self):
+        self.stdout.write(_('Enter title for your blog'))
+        woi_title = input('Title [WoI]: ').strip()
+        self.stdout.write(_('Enter subtitle'))
+        woi_subtitle = input('Subtitle [Words Of Interest]: ').strip()
+        self.woi_env['woi_title'] = woi_title or 'WoI'
+        self.woi_env['woi_subtitle'] = woi_subtitle or 'Words Of Interest'

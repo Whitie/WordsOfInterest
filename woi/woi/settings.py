@@ -92,7 +92,7 @@ MESSAGE_TAGS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'woi.sqlite3',
     }
 }
 
@@ -146,8 +146,8 @@ MEDIA_URL = config.get('MEDIA_URL', default='media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # WoI settings
-WOI_TITLE = ''
-WOI_SUBTITLE = ''
+WOI_TITLE = config.get('WOI_TITLE', default='')
+WOI_SUBTITLE = config.get('WOI_SUBTITLE', default='')
 WOI_COMMENT_DELETED_MESSAGE = ''
 WOI_FOOTER = True
 WOI_FEEDS = True

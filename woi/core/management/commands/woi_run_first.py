@@ -85,6 +85,17 @@ def add_readme():
         )
 
 
+def _ask(prompt, default=None):
+    if default is not None:
+        prompt = f'{prompt} [{default}]: '
+    while True:
+        answer = input(prompt).strip()
+        if answer:
+            return answer
+        if default is not None:
+            return default
+
+
 class Command(BaseCommand):
     help = _('Setup base configuration for WoI')
     woi_env = {
@@ -137,8 +148,6 @@ class Command(BaseCommand):
 
     def _ask_for_local_install(self):
         self.stdout.write(_('Enter title for your blog'))
-        woi_title = input('Title [WoI]: ').strip()
+        self.woi_env['woi_title'] = _ask('Title', 'WoI')
         self.stdout.write(_('Enter subtitle'))
-        woi_subtitle = input('Subtitle [Words Of Interest]: ').strip()
-        self.woi_env['woi_title'] = woi_title or 'WoI'
-        self.woi_env['woi_subtitle'] = woi_subtitle or 'Words Of Interest'
+        self.woi_env['woi_subtitle'] = _ask('Subtitle', 'Words Of Interest')

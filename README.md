@@ -1,8 +1,11 @@
 # WoI - Words Of Interest
 
-Simple blog engine written in Python and Django.
+Simple blog engine written in Python and Django. The database adapter defaults
+to [SQLite](https://www.sqlite.org), but usage of
+[PostgreSQL](https://www.postgresql.org/) and others are possible, see
+[Django docs](https://docs.djangoproject.com/en/4.0/ref/databases/).
 
-## Local usage
+## Local usage (Linux/Unix)
 
 It is recommended to run WoI in a virtual environment. WoI uses
 [Poetry](https://python-poetry.org) for dependency management, so it must
@@ -25,3 +28,20 @@ $ python manage.py runserver
 ```
 
 If everything went without errors, point your Browser to http://localhost:8000.
+To start WoI on every login, you can create a systemd user service:
+
+```
+# File: ~/.config/systemd/user/woi.service
+[Unit]
+Description=Run Words Of Interest on login
+
+[Service]
+Restart=on-failure
+WorkingDirectory=<PATH_TO>/woi-env/WordsOfInterest/woi
+ExecStart=<PATH_TO>/woi-env/bin/python <PATH_TO>/woi-env/WordsOfInterest/woi/manage.py runserver
+
+[Install]
+WantedBy=multi-user.target
+```
+
+After creation of the file run `systemctl --user enable woi.service --now`.
